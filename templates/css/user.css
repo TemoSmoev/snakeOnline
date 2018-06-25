@@ -1,0 +1,10 @@
+body{
+    background-color: #c3cbd8;
+}
+#form-div{
+    width: 800px;
+    margin: 40px auto 0 auto;
+}
+#welcome{
+    margin: 40px auto 20px auto;
+}
