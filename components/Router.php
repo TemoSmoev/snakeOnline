@@ -22,17 +22,16 @@ class Router
 
     public function run()
     {
-        // Получить строку запроса
+        // ვკითხულობთ URI-ს
         $uri = $this->getURI();
 
-        // Проверить наличие такого запроса в routes.php
+        // ვამოწმებთ არსებობს თუ არა ასეთი რექუესტი routes.php-ში
         foreach ($this->routes as $uriPattern => $path) {
-            // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)) {
-                // Получаем внутренний путь из внешнего согласно правилу.
+
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
-                // Определить контроллер, action, параметры
+                // ვსაზღვრავთ კონტროლერს, ექშნს და პარამეტრებს
 
                 $segments = explode('/', $internalRoute);
 
@@ -43,7 +42,7 @@ class Router
 
                 $parameters = $segments;
 
-                // Подключить файл класса-контроллера
+                // ვაერთებთ კონტროლერს
                 $controllerFile = ROOT . '/controllers/' .
                     $controllerName . '.php';
                // echo $controllerFile;
@@ -51,7 +50,7 @@ class Router
                     include_once($controllerFile);
                 }
 
-                // Создать объект, вызвать метод (т.е. action)
+                // ვქმნით ობიექტს და ვიძახებთ მეთოდს
                 $controllerObject = new $controllerName;
 
 

@@ -61,6 +61,7 @@ class User
             return $_SESSION['user'];
         }
     }
+    //ვამოწმებთ არსებობს თუ არა ასეთი მომხმარებელი(ვიყენებთ რეგისტრაციის დროს)
     public static function checkLogin($username){
         $db=Db::getConnection();
         $sql='SELECT 1 FROM user WHERE username=:username';
@@ -73,6 +74,7 @@ class User
         }
         return false;
     }
+    //მონაცემების წაკითხვა ბაზიდან აიდის დახმარებით
     public static function getUserDataFromId($id){
         $db=Db::getConnection();
         $sql='SELECT * FROM user WHERE id=:id;';
@@ -87,6 +89,7 @@ class User
         }
         return false;
     }
+    //მომხმარებლის საუკეთესო ქულის დამახსოვრება ბაზაში
     public static function updateScore($score){
         $db=Db::getConnection();
         $userId=$_SESSION['user'];

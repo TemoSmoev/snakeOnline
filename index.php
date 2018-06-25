@@ -8,11 +8,11 @@ error_reporting(E_ALL);
 session_start();
 
 
-// 2. Подключение файлов системы
+// 2. autoload-ის ჩაინქლუდება
 define('ROOT', dirname(__FILE__));
 require_once(ROOT.'/components/Autoload.php');
 
 
-// 4. Вызов Router
+// 4. როუტერის გამოძახება
 $router = new Router();
 $router->run();
